@@ -25,7 +25,7 @@ task strip_header {
         hic_file=${hic_file}
         # file_length=$(wc -c < $hic_file)
         # num_bytes_to_keep=$((file_length - header_size))
-        num_bytes_to_keep=300000
+        num_bytes_to_keep=250000
         echo $(wc -c $hic_file)
         md5sum $hic_file
         tail -c $num_bytes_to_keep $hic_file > no_header.hic
