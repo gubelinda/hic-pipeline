@@ -29,4 +29,7 @@ task strip_header {
     output {
         File no_header = glob("no_header.hic")[0]
     }
+    runtime {
+        docker : "quay.io/encode-dcc/hic-pipeline:template"
+    }
 }
