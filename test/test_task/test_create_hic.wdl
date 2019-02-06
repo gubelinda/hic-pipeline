@@ -14,6 +14,7 @@ workflow test_create_hic {
     }
     output {
         File no_header = strip_header.no_header
+        String value = strip_header.value
     }
 }
 
@@ -25,10 +26,15 @@ task strip_header {
         # file_length=$(wc -c < $hic_file)
         # num_bytes_to_keep=$((file_length - header_size))
         num_bytes_to_keep=301558
+        echo $(wc -c $hic_file)
+        md5sum $hic_file
         tail -c $num_bytes_to_keep $hic_file > no_header.hic
+        echo $(wc -c no_header.hic)
+        md5sum no_header.hic
     }
     output {
         File no_header = glob("no_header.hic")[0]
+        String value = read_string(stdout())
     }
     runtime {
         docker : "quay.io/encode-dcc/hic-pipeline:template"
