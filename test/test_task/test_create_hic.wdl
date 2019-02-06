@@ -23,7 +23,7 @@ task strip_header {
         header_size=1000
         hic_file=${hic_file}
         file_length=$(wc -c < $hic_file)
-        num_bytes_to_keep=$(echo "$file_length - $header_size" | bc)
+        num_bytes_to_keep=$((file_length - header_size))
         tail -c $num_bytes_to_keep $hic_file > no_header.hic
     }
     output {
