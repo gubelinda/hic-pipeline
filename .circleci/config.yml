@@ -27,7 +27,7 @@ jobs:
       task_name:
         description: "The name of the task being tested, like align, merge, etc."
         type: enum
-        enum: ["align", "arrowhead", "bam2pairs", "create_hic,", "dedup", "hiccups", "merge", "merge_sort"]
+        enum: ["align", "arrowhead", "bam2pairs", "create_hic", "dedup", "hiccups", "merge", "merge_sort"]
       keys_to_inspect:
         description: "The key(s) of the output(s) in metadata.json for which md5sum is to be computed, space delimited"
         type: string  
