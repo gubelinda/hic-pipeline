@@ -20,10 +20,11 @@ workflow test_create_hic {
 task strip_header {
     File hic_file
     command {
-        header_size=1000
+        # header_size=1000
         hic_file=${hic_file}
-        file_length=$(wc -c < $hic_file)
-        num_bytes_to_keep=$((file_length - header_size))
+        # file_length=$(wc -c < $hic_file)
+        # num_bytes_to_keep=$((file_length - header_size))
+        num_bytes_to_keep=301558
         tail -c $num_bytes_to_keep $hic_file > no_header.hic
     }
     output {
