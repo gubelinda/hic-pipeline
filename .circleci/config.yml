@@ -73,7 +73,7 @@ workflows:
             only:
               - master
               - dev-1
-              - PIP-495-add-loops-tads-tests
+              - PIP-510-add-create-hic-test
       - test_task:
           name: test_align
           requires:
@@ -110,3 +110,9 @@ workflows:
             - build
           task_name: "arrowhead"
           keys_to_inspect: "test_arrowhead.arrowhead_out"
+      - test_task:
+          name: create_hic
+          requires:
+            - build
+          task_name: "create_hic"
+          keys_to_inspect: "test_create_hic.no_header"
